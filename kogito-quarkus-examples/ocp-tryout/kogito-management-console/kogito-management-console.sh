@@ -17,7 +17,11 @@ elif [ "${action}" == "install" ]; then
   oc create configmap kogito-management-config --from-file=../testapp/svg -o yaml --dry-run=client | \
     oc label -f- --dry-run=client -o yaml --local=true app=kogito-management-console | \
     oc apply -f- -n $(getProjectName) $(dryRun)
+<<<<<<< HEAD
   oc new-app quay.io/kiegroup/kogito-management-console:1.36
+=======
+  oc new-app quay.io/kiegroup/kogito-management-console:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   waitForPod kogito-management-console
   oc patch deployment kogito-management-console --patch "$(cat deployment-patch.yaml)" -n $(getProjectName) $(dryRun)
   waitForPod kogito-management-console

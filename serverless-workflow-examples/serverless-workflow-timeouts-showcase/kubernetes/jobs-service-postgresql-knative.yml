@@ -1,81 +1,31 @@
 ---
-apiVersion: sources.knative.dev/v1
-kind: SinkBinding
-metadata:
-  name: jobs-service-postgresql-sb
-spec:
-  sink:
-    ref:
-      apiVersion: eventing.knative.dev/v1
-      kind: Broker
-      name: default
-      namespace: default
-  subject:
-    apiVersion: apps/v1
-    kind: Deployment
-    selector:
-      matchLabels:
-        app.kubernetes.io/name: jobs-service-postgresql
-        app.kubernetes.io/version: 2.0.0-SNAPSHOT
----
-apiVersion: v1
+apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   labels:
     app.kubernetes.io/name: jobs-service-postgresql
-    app.kubernetes.io/version: 2.0.0-SNAPSHOT
   name: jobs-service-postgresql
-  namespace: default
-spec:
-  ports:
-    - name: http
-      port: 80
-      targetPort: 8080
-  selector:
-    app.kubernetes.io/name: jobs-service-postgresql
-    app.kubernetes.io/version: 2.0.0-SNAPSHOT
-  type: ClusterIP
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app.kubernetes.io/name: jobs-service-postgresql
-    app.kubernetes.io/version: 2.0.0-SNAPSHOT
-  name: jobs-service-postgresql
-  namespace: default
 spec:
   replicas: 1
   # remove after https://issues.redhat.com/browse/KOGITO-8311 is done
   strategy:
     type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: jobs-service-postgresql
-      app.kubernetes.io/version: 2.0.0-SNAPSHOT
   template:
     metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "1"
       labels:
         app.kubernetes.io/name: jobs-service-postgresql
-        app.kubernetes.io/version: 2.0.0-SNAPSHOT
-      namespace: default
     spec:
       containers:
         - name: jobs-service-postgresql
-<<<<<<< HEAD
-          image: quay.io/kiegroup/kogito-jobs-service-allinone-nightly:1.36
-=======
           image: quay.io/kiegroup/kogito-jobs-service-allinone-nightly:1.35
->>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
           ports:
             - containerPort: 8080
-              name: http
+              name: http1
               protocol: TCP
           env:
-            - name: KUBERNETES_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
             - name: JOBS_SERVICE_PERSISTENCE
               value: "postgresql"
             - name: KOGITO_JOBS_SERVICE_KNATIVE_EVENTS
@@ -85,14 +35,14 @@ spec:
             - name: QUARKUS_DATASOURCE_PASSWORD
               value: pass
             - name: QUARKUS_DATASOURCE_JDBC_URL
-              value: jdbc:postgresql://timeouts-showcase-database:5432/postgres?currentSchema=jobs-service
+              value: jdbc:postgresql://timeouts-showcase-database:5432/postgres
             - name: QUARKUS_DATASOURCE_REACTIVE_URL
-              value: postgresql://timeouts-showcase-database:5432/postgres?search_path=jobs-service
+              value: postgresql://timeouts-showcase-database:5432/postgres
           livenessProbe:
             failureThreshold: 3
             httpGet:
               path: /q/health/live
-              port: 8080
+              port: null
               scheme: HTTP
             initialDelaySeconds: 0
             periodSeconds: 30
@@ -102,7 +52,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /q/health/ready
-              port: 8080
+              port: null
               scheme: HTTP
             initialDelaySeconds: 0
             periodSeconds: 30
@@ -117,13 +67,13 @@ spec:
   broker: default
   filter:
     attributes:
-      type: job.create
+      type: CreateProcessInstanceJobRequest
   subscriber:
     ref:
-      apiVersion: v1
+      apiVersion: serving.knative.dev/v1
       kind: Service
       name: jobs-service-postgresql
-    uri: /v2/jobs/events
+    uri: /jobs/events
 ---
 apiVersion: eventing.knative.dev/v1
 kind: Trigger
@@ -133,10 +83,26 @@ spec:
   broker: default
   filter:
     attributes:
-      type: job.delete
+      type: CancelJobRequest
   subscriber:
     ref:
-      apiVersion: v1
+      apiVersion: serving.knative.dev/v1
       kind: Service
       name: jobs-service-postgresql
-    uri: /v2/jobs/events
+    uri: /jobs/events
+---
+apiVersion: sources.knative.dev/v1
+kind: SinkBinding
+metadata:
+  name: jobs-service-postgresql-sb
+spec:
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: default
+      namespace: ""
+  subject:
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    name: jobs-service-postgresql

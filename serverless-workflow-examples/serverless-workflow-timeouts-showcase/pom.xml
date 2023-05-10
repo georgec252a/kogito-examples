@@ -16,8 +16,12 @@
     <quarkus.platform.version>2.16.4.Final</quarkus.platform.version>
     <kogito.bom.group-id>org.kie.kogito</kogito.bom.group-id>
     <kogito.bom.artifact-id>kogito-bom</kogito.bom.artifact-id>
+<<<<<<< HEAD
     <kogito.quarkus.bom.artifact-id>kogito-quarkus-bom</kogito.quarkus.bom.artifact-id>
     <kogito.bom.version>1.36.1.Final</kogito.bom.version>
+=======
+    <kogito.bom.version>1.35.0.Final</kogito.bom.version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     <maven.compiler.release>11</maven.compiler.release>
     <version.compiler.plugin>3.8.1</version.compiler.plugin>
     <version.surefire.plugin>3.0.0-M7</version.surefire.plugin>

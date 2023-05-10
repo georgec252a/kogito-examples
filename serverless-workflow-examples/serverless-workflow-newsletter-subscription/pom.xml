@@ -18,7 +18,11 @@
     <quarkus.platform.version>2.16.4.Final</quarkus.platform.version>
     <kogito.bom.group-id>org.kie.kogito</kogito.bom.group-id>
     <kogito.bom.artifact-id>kogito-bom</kogito.bom.artifact-id>
+<<<<<<< HEAD
     <kogito.bom.version>1.36.1.Final</kogito.bom.version>
+=======
+    <kogito.bom.version>1.35.0.Final</kogito.bom.version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     <version.surefire.plugin>3.0.0-M7</version.surefire.plugin>
     <version.org.webjars.bootstrap>5.1.3</version.org.webjars.bootstrap>
     <version.org.webjars.jquery>3.6.0</version.org.webjars.jquery>

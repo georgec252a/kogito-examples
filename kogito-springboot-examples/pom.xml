@@ -7,7 +7,11 @@
   <parent>
     <groupId>org.kie.kogito.examples</groupId>
     <artifactId>kogito-examples</artifactId>
+<<<<<<< HEAD
     <version>1.36.1.Final</version>
+=======
+    <version>1.35.0.Final</version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   </parent>
 
   <artifactId>kogito-springboot-examples</artifactId>

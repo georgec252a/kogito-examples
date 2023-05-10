@@ -18,7 +18,11 @@ elif [ "${action}" == "install" ]; then
   oc create configmap data-index-config --from-file=../testapp/protobuf -o yaml --dry-run=client | \
     oc label -f- --dry-run=client -o yaml --local=true app=kogito-data-index-"${type}" | \
     oc apply -f- -n $(getProjectName) $(dryRun)
+<<<<<<< HEAD
   oc new-app quay.io/kiegroup/kogito-data-index-"${type}":1.36
+=======
+  oc new-app quay.io/kiegroup/kogito-data-index-"${type}":1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   waitForPod kogito-data-index
   oc patch deployment kogito-data-index-"${type}" --patch "$(cat deployment-patch-"${type}".yaml)" -n $(getProjectName) $(dryRun)
   waitForPod kogito-data-index

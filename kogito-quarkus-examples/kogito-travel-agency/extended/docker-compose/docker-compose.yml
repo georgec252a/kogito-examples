@@ -91,7 +91,11 @@ services:
 
   data-index:
     container_name: data-index
+<<<<<<< HEAD
     image: quay.io/kiegroup/kogito-data-index-infinispan:1.36
+=======
+    image: quay.io/kiegroup/kogito-data-index-infinispan:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     ports:
       - "8180:8080"
     depends_on:
@@ -110,7 +114,11 @@ services:
 
   management-console:
     container_name: management-console
+<<<<<<< HEAD
     image: quay.io/kiegroup/kogito-management-console:1.36
+=======
+    image: quay.io/kiegroup/kogito-management-console:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     ports:
       - 8280:8080
     depends_on:
@@ -126,7 +134,11 @@ services:
 
   task-console:
     container_name: task-console
+<<<<<<< HEAD
     image: quay.io/kiegroup/kogito-task-console:1.36
+=======
+    image: quay.io/kiegroup/kogito-task-console:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     ports:
       - 8380:8080
     depends_on:
