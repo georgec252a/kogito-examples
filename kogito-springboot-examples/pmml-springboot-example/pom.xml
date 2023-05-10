@@ -7,14 +7,23 @@
   <parent>
     <groupId>org.kie.kogito.examples</groupId>
     <artifactId>kogito-springboot-examples</artifactId>
+<<<<<<< HEAD
     <version>1.36.1.Final</version>
+=======
+    <version>1.35.0.Final</version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   </parent>
   <artifactId>pmml-springboot-example</artifactId>
   <name>Kogito Example :: PMML - Spring Boot</name>
 
   <properties>
+<<<<<<< HEAD
     <version.org.kie.kogito>1.36.1.Final</version.org.kie.kogito>
     <kogito.bom.version>1.36.1.Final</kogito.bom.version>
+=======
+    <version.org.kie.kogito>1.35.0.Final</version.org.kie.kogito>
+    <kogito.bom.version>1.35.0.Final</kogito.bom.version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   </properties>
 
   <dependencyManagement>

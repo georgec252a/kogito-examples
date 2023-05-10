@@ -57,7 +57,7 @@ kubectl create namespace "$PROJECT_NAME"
 Set the Kogito release version
 
 ```bash
-KOGITO_VERSION=v1.5.0
+KOGITO_VERSION=v1.35.0
 ```
 
 Deploy the kogito operator in the cluster
@@ -127,7 +127,11 @@ metadata:
 spec:
   serviceType: TrustyUI
   replicas: 1
+<<<<<<< HEAD
   image: quay.io/kiegroup/kogito-trusty-ui:1.36
+=======
+  image: quay.io/kiegroup/kogito-trusty-ui:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   env:
     - name: KOGITO_TRUSTY_ENDPOINT
       value: http://172.17.0.2:1337

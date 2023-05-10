@@ -7,7 +7,11 @@
   <parent>
     <groupId>org.kie.kogito</groupId>
     <artifactId>kogito-build-no-bom-parent</artifactId>
+<<<<<<< HEAD
     <version>1.36.1.Final</version>
+=======
+    <version>1.35.0.Final</version>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   </parent>
 
   <groupId>org.kie.kogito.examples</groupId>
@@ -34,7 +38,11 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+<<<<<<< HEAD
     <version.org.kie.kogito>1.36.1.Final</version.org.kie.kogito>
+=======
+    <version.org.kie.kogito>1.35.0.Final</version.org.kie.kogito>
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
 
     <surefire.forkCount>1</surefire.forkCount>
     <failsafe.include>**/*IT.java</failsafe.include>

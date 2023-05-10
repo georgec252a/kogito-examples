@@ -5,6 +5,10 @@ metadata:
 spec:
   serviceType: Explainability
   replicas: 1
+<<<<<<< HEAD
   image: quay.io/kiegroup/kogito-explainability:1.36
+=======
+  image: quay.io/kiegroup/kogito-explainability:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   infra:
     - kogito-kafka-infra

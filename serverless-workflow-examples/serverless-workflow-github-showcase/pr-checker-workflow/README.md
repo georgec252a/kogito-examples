@@ -101,7 +101,11 @@ You should see a similar output like this:
 <details><summary>Build logs</summary>
 ```
 ---> Building and pushing image using tag quay.io/your_namespace/pr-checker-workflow:latest
+<<<<<<< HEAD
 STEP 1: FROM quay.io/kiegroup/kogito-runtime-jvm:1.36
+=======
+STEP 1: FROM quay.io/kiegroup/kogito-runtime-jvm:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
 STEP 2: ENV RUNTIME_TYPE quarkus
 STEP 3: COPY target/*-runner.jar $KOGITO_HOME/bin
 --> 58760d128d8

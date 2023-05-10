@@ -5,7 +5,11 @@ metadata:
 spec:
   serviceType: TrustyUI
   replicas: 1
+<<<<<<< HEAD
   image: quay.io/kiegroup/kogito-trusty-ui:1.36
+=======
+  image: quay.io/kiegroup/kogito-trusty-ui:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
   env:
     - name: KOGITO_TRUSTY_ENDPOINT
       value: http://172.17.0.2

@@ -45,7 +45,11 @@ services:
       - ./docker-compose/infinispan/infinispan.xml:/opt/infinispan/server/conf/infinispan-demo.xml:z
 
   trusty:
+<<<<<<< HEAD
     image: quay.io/kiegroup/kogito-trusty-nightly:1.36
+=======
+    image: quay.io/kiegroup/kogito-trusty-nightly:1.35
+>>>>>>> 67c18c06d7b1aec544b5686f57f0e857ecea6a66
     depends_on:
       - kafka
       - infinispan
